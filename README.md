@@ -14,3 +14,7 @@ This is a simple one so they're just two
 
 This was just4fun, however i'm planning on making a script to download from Youtube (usign youtube-dl) an
 entire playlist from spotify using this little script as the foundation.
+
+
+# Note
+It is important to remark that this does not work for albums, nonetheless I'm working on it!
