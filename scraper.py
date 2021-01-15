@@ -7,6 +7,7 @@ import os
 HOME_URL = input("Playlist url: ")
 XPATH_PLAYLIST_NAME = '//div[@class="media-bd"]/h1/span[@dir="auto"]/text()'
 XPATH_SONG_LIST = '//span[@class="track-name"]/text()'
+XPATH_AUTHORS = '//span[@class="artists-albums"]/a[starts-with(@href, \'/artist/\')]/span/text()'
 
 def parse_home():
     try:
@@ -16,6 +17,8 @@ def parse_home():
             parsed = html.fromstring(home)
             songList = parsed.xpath(XPATH_SONG_LIST)
             playlistName = parsed.xpath(XPATH_PLAYLIST_NAME)
+            authorsName = parsed.xpath(XPATH_AUTHORS)
+            #print(authorName)
             #print(songList)
             #print(playlistName)
 
@@ -27,7 +30,7 @@ def parse_home():
                 f.write('\n\n')
                 trackCount = 1
                 for song in songList:
-                    f.write(f'{trackCount}.- {song}')
+                    f.write(f'{trackCount}.- {song} by {authorsName[trackCount - 1]}')
                     f.write('\n')
                     trackCount += 1
         
@@ -39,8 +42,8 @@ def parse_home():
         print(ve)
 
 
-def run():
+def main():
     parse_home()
 
 if __name__ == "__main__":
-    run()
+    main()
