@@ -1,7 +1,5 @@
 import requests 
 import lxml.html as html
-import os
-
 
 
 HOME_URL = input("Playlist url: ")
@@ -18,12 +16,6 @@ def parse_home():
             songList = parsed.xpath(XPATH_SONG_LIST)
             playlistName = parsed.xpath(XPATH_PLAYLIST_NAME)
             authorsName = parsed.xpath(XPATH_AUTHORS)
-            #print(authorName)
-            #print(songList)
-            #print(playlistName)
-
-            #if not os.path.isfile('{playlistName[0]}.txt'):
-             #   os.('{playlistName[0]}.txt')
             
             with open(f'{playlistName[0]}.txt', 'w', encoding='utf-8') as f:
                 f.write(playlistName[0])
